@@ -260,28 +260,43 @@ h1{text-align:center;font-size:clamp(1.4rem,5vw,2.1rem);font-weight:900;backgrou
 #rec-user-bar .ru-name{color:var(--a1);}
 #rec-user-bar .ru-sub{font-size:.75rem;color:rgba(240,230,255,.45);font-weight:600;margin-top:2px;}
 
-/* Right-top rec button */
-#rec-float-btn{position:fixed;top:14px;right:70px;z-index:400;background:var(--card);border:2px solid rgba(199,125,255,.3);border-radius:50%;width:48px;height:48px;font-size:1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.3);transition:all .2s;}
-#rec-float-btn:hover{border-color:var(--a2);box-shadow:0 4px 24px rgba(199,125,255,.4);}
-#mic-float-btn{position:fixed;top:14px;right:16px;z-index:400;background:var(--card);border:2px solid rgba(199,125,255,.3);border-radius:50%;width:48px;height:48px;font-size:1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.3);transition:all .2s;}
-#mic-float-btn:hover{border-color:var(--a2);box-shadow:0 4px 24px rgba(199,125,255,.4);}
-#voice-drawer{position:fixed;top:70px;right:16px;z-index:450;background:rgba(15,12,26,.97);backdrop-filter:blur(16px);border:1px solid rgba(199,125,255,.25);border-radius:20px;padding:16px;width:230px;display:none;box-shadow:0 8px 32px rgba(0,0,0,.4);}
-#voice-drawer.open{display:block;}
-#voice-drawer-title{font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--a2);margin-bottom:10px;}
-#voice-drawer .vbtn{width:100%;justify-content:flex-start;margin-bottom:6px;border-radius:12px;padding:10px 12px;}
-/* Editable title */
+/* Single settings float button */
+#settings-float-btn{position:fixed;top:14px;right:16px;z-index:400;background:var(--card);border:2px solid rgba(199,125,255,.3);border-radius:50%;width:48px;height:48px;font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.3);transition:all .2s;}
+#settings-float-btn:hover{border-color:var(--a2);box-shadow:0 0 24px rgba(199,125,255,.5);}
+#settings-overlay{position:fixed;inset:0;z-index:600;background:rgba(0,0,0,.5);display:none;}
+#settings-overlay.show{display:block;}
+#settings-panel{position:fixed;top:0;right:-100%;width:min(480px,100vw);height:100vh;z-index:610;background:rgba(12,10,22,.98);backdrop-filter:blur(16px);border-left:1px solid rgba(199,125,255,.2);overflow-y:auto;padding:20px 16px 80px;transition:right .32s cubic-bezier(.34,1.1,.64,1);}
+#settings-panel.open{right:0;}
+#settings-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid rgba(199,125,255,.15);}
+#settings-title{font-size:1.15rem;font-weight:900;color:var(--txt);}
+#settings-close{background:none;border:1px solid rgba(255,255,255,.15);border-radius:50%;width:36px;height:36px;color:rgba(240,230,255,.6);font-size:1.1rem;cursor:pointer;}
+.s-nav{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;}
+.s-navbtn{padding:9px 14px;border-radius:50px;border:2px solid rgba(199,125,255,.2);background:rgba(255,255,255,.04);color:rgba(240,230,255,.6);font-family:'Nunito',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;transition:all .15s;}
+.s-navbtn.on{background:linear-gradient(135deg,var(--a1),var(--a2));border-color:transparent;color:#fff;box-shadow:0 0 14px rgba(255,107,157,.3);}
+.s-sec{display:none;}.s-sec.on{display:block;}
+.s-mode-btn{width:100%;padding:12px 16px;border-radius:13px;border:2px solid rgba(199,125,255,.18);background:rgba(255,255,255,.04);color:rgba(240,230,255,.65);font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;text-align:left;transition:all .15s;display:block;margin-bottom:7px;}
+.s-mode-btn.on{border-color:var(--a2);background:rgba(199,125,255,.15);color:#fff;}
+.admin-tabs{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
+.admin-tab{padding:8px 14px;border-radius:50px;border:1px solid rgba(199,125,255,.2);background:rgba(255,255,255,.04);color:rgba(240,230,255,.6);font-family:'Nunito',sans-serif;font-size:.8rem;font-weight:700;cursor:pointer;transition:all .15s;}
+.admin-tab.on{background:rgba(199,125,255,.2);border-color:var(--a2);color:#fff;}
+.admin-sec{display:none;}.admin-sec.on{display:block;}
+.admin-card-list{display:flex;flex-direction:column;gap:7px;margin-bottom:14px;max-height:40vh;overflow-y:auto;}
+.admin-card-item{background:rgba(255,255,255,.05);border:1px solid rgba(199,125,255,.12);border-radius:12px;padding:9px 11px;display:flex;align-items:center;gap:9px;}
+.admin-card-em{font-size:1.5rem;flex-shrink:0;}
+.admin-card-info{flex:1;}
+.admin-card-name{font-weight:700;font-size:.86rem;}
+.admin-card-sub{font-size:.68rem;color:rgba(240,230,255,.35);margin-top:1px;}
+.admin-del-btn{background:rgba(255,77,109,.15);border:1px solid rgba(255,77,109,.3);color:#ff4d6d;border-radius:50%;width:27px;height:27px;font-size:.78rem;cursor:pointer;flex-shrink:0;line-height:27px;text-align:center;}
+.admin-add-form{background:rgba(199,125,255,.07);border:1px solid rgba(199,125,255,.2);border-radius:14px;padding:13px;margin-bottom:13px;}
+.admin-form-label{display:block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--a2);margin-bottom:5px;}
+.admin-input{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(199,125,255,.22);border-radius:10px;padding:9px 12px;color:var(--txt);font-family:'Nunito',sans-serif;font-size:.9rem;font-weight:600;outline:none;margin-bottom:9px;}
+.admin-input:focus{border-color:var(--a2);}
+.admin-save-btn{width:100%;padding:11px;border-radius:50px;border:none;background:linear-gradient(135deg,var(--a1),var(--a2));color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:.92rem;cursor:pointer;}
+.admin-sec-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--a2);margin:12px 0 6px;}
 #site-title{cursor:pointer;display:inline-block;border-bottom:2px dashed transparent;border-radius:4px;transition:border-color .2s;padding:0 4px;}
 #site-title:hover{border-color:rgba(199,125,255,.5);}
 #title-edit-wrap{display:none;margin-bottom:8px;}
 #title-input{background:rgba(255,255,255,.07);border:2px solid var(--a2);border-radius:12px;padding:8px 14px;color:var(--txt);font-family:'Nunito',sans-serif;font-size:1rem;font-weight:700;text-align:center;outline:none;width:220px;max-width:90vw;}
-/* Rec drawer */
-#rec-drawer{position:fixed;top:0;right:-100%;width:min(420px,100vw);height:100vh;z-index:500;background:rgba(15,12,26,.98);backdrop-filter:blur(16px);border-left:1px solid rgba(199,125,255,.2);transition:right .32s cubic-bezier(.34,1.1,.64,1);overflow-y:auto;padding:20px 16px 60px;}
-#rec-drawer.open{right:0;}
-#rec-drawer-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;}
-#rec-drawer-title{font-size:1.2rem;font-weight:900;color:var(--txt);}
-#rec-drawer-close{background:none;border:1px solid rgba(255,255,255,.15);border-radius:50%;width:36px;height:36px;color:rgba(240,230,255,.6);font-size:1.1rem;cursor:pointer;}
-#rec-overlay{position:fixed;inset:0;z-index:490;background:rgba(0,0,0,.4);display:none;}
-#rec-overlay.show{display:block;}
 .rec-date-group{margin-bottom:10px;}
 .rec-date-header{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:rgba(199,125,255,.12);border-radius:12px;border:1px solid rgba(199,125,255,.2);cursor:pointer;font-weight:700;font-size:.88rem;color:var(--a2);margin-bottom:6px;transition:background .15s;}
 .rec-date-header:hover{background:rgba(199,125,255,.2);}
@@ -303,66 +318,156 @@ h1{text-align:center;font-size:clamp(1.4rem,5vw,2.1rem);font-weight:900;backgrou
   <button id="fs-close" onclick="closeFS()">✕ 關閉</button>
 </div>
 
-<!-- Rec overlay -->
-<div id="rec-overlay" onclick="closeRecDrawer()"></div>
+<!-- Single settings float button -->
+<button id="settings-float-btn" onclick="openSettings()" title="設定">⚙️</button>
 
-<!-- Rec drawer -->
-<div id="rec-drawer">
-  <div id="rec-drawer-header">
-    <div id="rec-drawer-title">📒 紀錄本</div>
-    <button id="rec-drawer-close" onclick="closeRecDrawer()">✕</button>
+<!-- Settings panel overlay -->
+<div id="settings-overlay" onclick="closeSettings()"></div>
+
+<!-- Settings panel (slides from right) -->
+<div id="settings-panel">
+  <div id="settings-header">
+    <div id="settings-title">⚙️ 設定</div>
+    <button id="settings-close" onclick="closeSettings()">✕</button>
   </div>
-  <div class="rec-tabs">
-    <button class="rtab on" onclick="swRecTab(this,'history')">📋 歷史紀錄</button>
-    <button class="rtab" onclick="swRecTab(this,'summary')">📊 統整報告</button>
+
+  <!-- Settings nav -->
+  <div class="s-nav">
+    <button class="s-navbtn on" onclick="swSettings(this,'rec-sec')">📒 紀錄本</button>
+    <button class="s-navbtn" onclick="swSettings(this,'voice-sec')">🎙️ 語音</button>
+    <button class="s-navbtn" onclick="swSettings(this,'cards-sec')">✏️ 字卡管理</button>
   </div>
-  <div id="rec-history" class="rec-panel on">
-    <div id="rec-user-bar"></div>
-    <div id="rec-summary-stats">
-      <div class="rec-stat-row">
-        <div class="rec-stat"><span class="rs-num" id="rs-total">0</span><span class="rs-lbl">總紀錄</span></div>
-        <div class="rec-stat" style="--sc:#06d6a0"><span class="rs-num" id="rs-like">0</span><span class="rs-lbl">👍 喜歡</span></div>
-        <div class="rec-stat" style="--sc:#ff4d6d"><span class="rs-num" id="rs-dislike">0</span><span class="rs-lbl">👎 不喜歡</span></div>
-        <div class="rec-stat" style="--sc:#ffd166"><span class="rs-num" id="rs-need">0</span><span class="rs-lbl">🙋 需求</span></div>
-        <div class="rec-stat" style="--sc:#c77dff"><span class="rs-num" id="rs-feel">0</span><span class="rs-lbl">😊 感受</span></div>
-        <div class="rec-stat" style="--sc:#ff6b9d"><span class="rs-num" id="rs-talk">0</span><span class="rs-lbl">✋ 溝通</span></div>
+
+  <!-- ── 紀錄本 ── -->
+  <div id="settings-rec-sec" class="s-sec on">
+    <div class="rec-tabs">
+      <button class="rtab on" onclick="swRecTab(this,'history')">📋 歷史紀錄</button>
+      <button class="rtab" onclick="swRecTab(this,'summary')">📊 統整報告</button>
+    </div>
+    <div id="rec-history" class="rec-panel on">
+      <div id="rec-user-bar"></div>
+      <div id="rec-summary-stats">
+        <div class="rec-stat-row">
+          <div class="rec-stat"><span class="rs-num" id="rs-total">0</span><span class="rs-lbl">總紀錄</span></div>
+          <div class="rec-stat" style="--sc:#06d6a0"><span class="rs-num" id="rs-like">0</span><span class="rs-lbl">👍 喜歡</span></div>
+          <div class="rec-stat" style="--sc:#ff4d6d"><span class="rs-num" id="rs-dislike">0</span><span class="rs-lbl">👎 不喜歡</span></div>
+          <div class="rec-stat" style="--sc:#ffd166"><span class="rs-num" id="rs-need">0</span><span class="rs-lbl">🙋 需求</span></div>
+          <div class="rec-stat" style="--sc:#c77dff"><span class="rs-num" id="rs-feel">0</span><span class="rs-lbl">😊 感受</span></div>
+          <div class="rec-stat" style="--sc:#ff6b9d"><span class="rs-num" id="rs-talk">0</span><span class="rs-lbl">✋ 溝通</span></div>
+        </div>
       </div>
+      <div class="rec-cats">
+        <button class="rcat on" onclick="filterRec(this,'all')">全部</button>
+        <button class="rcat" onclick="filterRec(this,'like')">👍 喜歡</button>
+        <button class="rcat" onclick="filterRec(this,'dislike')">👎 不喜歡</button>
+        <button class="rcat" onclick="filterRec(this,'need')">🙋 需求</button>
+        <button class="rcat" onclick="filterRec(this,'feel')">😊 感受</button>
+        <button class="rcat" onclick="filterRec(this,'talk')">✋ 溝通</button>
+        <button class="rcat" onclick="filterRec(this,'music')">🎵 音樂</button>
+        <button class="rcat" onclick="filterRec(this,'yn')">好不好</button>
+      </div>
+      <div id="rec-list"></div>
+      <div style="display:flex;gap:10px;margin-top:14px;justify-content:center;flex-wrap:wrap;">
+        <button class="rac-btn" onclick="clearRec()">🗑️ 清除全部</button>
+        <button class="rac-btn grn" onclick="exportRec()">📋 複製摘要</button>
+      </div>
+      <p id="rec-copied" style="text-align:center;color:var(--yes);font-size:.85rem;margin-top:8px;display:none;">✅ 已複製！</p>
     </div>
-    <div class="rec-cats">
-      <button class="rcat on" onclick="filterRec(this,'all')">全部</button>
-      <button class="rcat" onclick="filterRec(this,'like')">👍 喜歡</button>
-      <button class="rcat" onclick="filterRec(this,'dislike')">👎 不喜歡</button>
-      <button class="rcat" onclick="filterRec(this,'need')">🙋 需求</button>
-      <button class="rcat" onclick="filterRec(this,'feel')">😊 感受</button>
-      <button class="rcat" onclick="filterRec(this,'talk')">✋ 溝通</button>
-      <button class="rcat" onclick="filterRec(this,'music')">🎵 音樂</button>
-      <button class="rcat" onclick="filterRec(this,'yn')">好不好</button>
+    <div id="rec-summary" class="rec-panel">
+      <div id="summary-content"></div>
+      <div style="display:flex;gap:10px;margin-top:14px;justify-content:center;">
+        <button class="rac-btn grn" onclick="copySummary()">📋 複製報告</button>
+      </div>
+      <p id="sum-copied" style="text-align:center;color:var(--yes);font-size:.85rem;margin-top:8px;display:none;">✅ 已複製！</p>
     </div>
-    <div id="rec-list"></div>
-    <div style="display:flex;gap:10px;margin-top:14px;justify-content:center;flex-wrap:wrap;">
-      <button class="rac-btn" onclick="clearRec()">🗑️ 清除全部</button>
-      <button class="rac-btn grn" onclick="exportRec()">📋 複製摘要</button>
-    </div>
-    <p id="rec-copied" style="text-align:center;color:var(--yes);font-size:.85rem;margin-top:8px;display:none;">✅ 已複製！</p>
   </div>
-  <div id="rec-summary" class="rec-panel">
-    <div id="summary-content"></div>
-    <div style="display:flex;gap:10px;margin-top:14px;justify-content:center;">
-      <button class="rac-btn grn" onclick="copySummary()">📋 複製報告</button>
-    </div>
-    <p id="sum-copied" style="text-align:center;color:var(--yes);font-size:.85rem;margin-top:8px;display:none;">✅ 已複製！</p>
-  </div>
-</div>
 
-<!-- Float rec button -->
-<button id="rec-float-btn" onclick="openRecDrawer()" title="紀錄本">📒</button>
-<!-- Float mic button -->
-<button id="mic-float-btn" onclick="toggleVoiceDrawer()" title="語音選擇">🎙️</button>
-<!-- Voice drawer -->
-<div id="voice-drawer">
-  <div id="voice-drawer-title">🎙️ 語音選擇</div>
-  <div id="voice-options"></div>
-</div>
+  <!-- ── 語音 ── -->
+  <div id="settings-voice-sec" class="s-sec">
+    <div class="admin-sec-label">🎙️ 語音風格</div>
+    <div id="voice-options" style="display:flex;flex-direction:column;gap:8px;margin-bottom:18px;"></div>
+
+    <div class="admin-sec-label">🔊 音效模式</div>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <button class="s-mode-btn on" id="mode-full"    onclick="setSoundMode('full')">🔊 語音＋音效（全開）</button>
+      <button class="s-mode-btn"    id="mode-sfx"     onclick="setSoundMode('sfx')">🎵 只有音效（無語音）</button>
+      <button class="s-mode-btn"    id="mode-tts"     onclick="setSoundMode('tts')">🗣️ 只有語音（無音效）</button>
+      <button class="s-mode-btn"    id="mode-silent"  onclick="setSoundMode('silent')">🔇 靜音（全關）</button>
+    </div>
+  </div>
+
+  <!-- ── 字卡管理 ── -->
+  <div id="settings-cards-sec" class="s-sec">
+
+    <div class="admin-tabs" style="margin-bottom:14px;">
+      <button class="admin-tab on" onclick="swAdminTab(this,'admin-custom-cards')">➕ 新增字卡</button>
+      <button class="admin-tab" onclick="swAdminTab(this,'admin-daily-manage')">💬 日常對話</button>
+      <button class="admin-tab" onclick="swAdminTab(this,'admin-music-manage')">🎵 音樂</button>
+    </div>
+
+    <!-- 新增自訂字卡 -->
+    <div id="admin-custom-cards" class="admin-sec on">
+      <div class="admin-add-form">
+        <div class="admin-form-label">新增自訂字卡</div>
+        <input class="admin-input" id="new-card-emoji" placeholder="表情符號（例如 😊）" maxlength="4">
+        <input class="admin-input" id="new-card-label" placeholder="顯示文字（例如：我很快樂）" maxlength="12">
+        <input class="admin-input" id="new-card-speak" placeholder="語音唸出的話（可與上方相同）" maxlength="20">
+        <select class="admin-input" id="new-card-cat">
+          <option value="comm">✋ 溝通用語</option>
+          <option value="feel">😊 我的感受</option>
+          <option value="need">🍽️ 我的需求</option>
+          <option value="num">🔢 數字</option>
+          <option value="other">👥 關於別人</option>
+          <option value="food">🍜 食物喜好</option>
+          <option value="fruit">🍎 水果</option>
+          <option value="sweet">🍰 點心甜食</option>
+          <option value="body">💪 身體狀況</option>
+          <option value="activity">🎯 今天的活動</option>
+          <option value="person">👨‍👩‍👧 家人／朋友</option>
+        </select>
+        <button class="admin-save-btn" onclick="addCustomCard()">➕ 新增字卡</button>
+      </div>
+      <div class="admin-sec-label">已新增的自訂字卡</div>
+      <div class="admin-card-list" id="custom-card-list"></div>
+    </div>
+
+    <!-- 日常對話管理（隱藏/顯示） -->
+    <div id="admin-daily-manage" class="admin-sec">
+      <p style="font-size:.78rem;color:rgba(240,230,255,.4);margin-bottom:10px;">按 ✕ 隱藏字卡，按 ⬆ 恢復顯示。</p>
+      <div class="admin-sec-label">✋ 溝通用語</div>
+      <div class="admin-card-list" id="admin-list-comm"></div>
+      <div class="admin-sec-label">😊 我的感受</div>
+      <div class="admin-card-list" id="admin-list-feel"></div>
+      <div class="admin-sec-label">🍽️ 我的需求</div>
+      <div class="admin-card-list" id="admin-list-need"></div>
+      <div class="admin-sec-label">🎯 今天的活動</div>
+      <div class="admin-card-list" id="admin-list-act"></div>
+      <div class="admin-sec-label">🍜 食物喜好</div>
+      <div class="admin-card-list" id="admin-list-food"></div>
+      <div class="admin-sec-label">💪 身體狀況</div>
+      <div class="admin-card-list" id="admin-list-body"></div>
+    </div>
+
+    <!-- 音樂管理 -->
+    <div id="admin-music-manage" class="admin-sec">
+      <div class="admin-add-form">
+        <div class="admin-form-label">新增 YouTube 音樂卡</div>
+        <input class="admin-input" id="new-music-emoji" placeholder="表情符號" maxlength="4">
+        <input class="admin-input" id="new-music-title" placeholder="歌曲名稱" maxlength="16">
+        <input class="admin-input" id="new-music-artist" placeholder="歌手名" maxlength="12">
+        <input class="admin-input" id="new-music-url" placeholder="YouTube 網址或影片 ID">
+        <button class="admin-save-btn" onclick="addCustomMusic()">➕ 新增音樂</button>
+      </div>
+      <div class="admin-sec-label">已新增的音樂卡</div>
+      <div class="admin-card-list" id="custom-music-list"></div>
+    </div>
+
+  </div><!-- cards-sec -->
+
+</div><!-- settings-panel -->
+
+<!-- Voice drawer (removed, now inside settings) -->
+
 
 <div class="wrap">
   <div style="position:relative;text-align:center;margin-bottom:4px;">
@@ -423,10 +528,21 @@ h1{text-align:center;font-size:clamp(1.4rem,5vw,2.1rem);font-weight:900;backgrou
         <div class="card" onclick="say(this,'hello','👋','你好！','打招呼')"><span class="ce">👋</span><div class="cl">你好！</div><div class="cs">打招呼</div></div>
       </div>
     </div>
+    <!-- 自訂音樂字卡 -->
+    <div class="gsec" id="custom-music-sec" style="display:none">
+      <div class="glabel">⭐ 自訂音樂</div>
+      <div class="grid" id="custom-music-grid"></div>
+    </div>
   </div>
 
   <!-- ══ 日常對話 ══ -->
   <div id="daily" class="sec">
+
+    <!-- 自訂字卡 -->
+    <div class="gsec" id="custom-cards-sec" style="display:none">
+      <div class="glabel">⭐ 我的自訂字卡</div>
+      <div class="grid" id="custom-cards-grid"></div>
+    </div>
 
     <div class="gsec">
       <div class="glabel">✋ 溝通用語</div>
@@ -1079,30 +1195,267 @@ function swTab(btn, id) {
   }
 }
 
-// ── Voice Drawer ──
-function toggleVoiceDrawer() {
-  var d = document.getElementById('voice-drawer');
-  d.classList.toggle('open');
+// ── Admin sub-tab switcher ──
+function swAdminTab(btn, id) {
+  document.querySelectorAll('.admin-tab').forEach(function(b){b.classList.remove('on');});
+  document.querySelectorAll('.admin-sec').forEach(function(s){s.classList.remove('on');});
+  btn.classList.add('on');
+  document.getElementById(id).classList.add('on');
+  if (id==='admin-daily-manage') renderAdminLists();
+  if (id==='admin-custom-cards') { renderAdminCustomList(); }
+  if (id==='admin-music-manage') renderAdminMusicList();
 }
-document.addEventListener('click', function(e) {
-  var d = document.getElementById('voice-drawer');
-  var btn = document.getElementById('mic-float-btn');
-  if (d && d.classList.contains('open') && !d.contains(e.target) && e.target !== btn) {
-    d.classList.remove('open');
-  }
-});
 
-// ── Rec Drawer ──
-function openRecDrawer() {
-  loadDB();
-  renderRec();
-  document.getElementById('rec-drawer').classList.add('open');
-  document.getElementById('rec-overlay').classList.add('show');
+// ── Custom Cards (daily) ──
+var customCards = [];
+function loadCustomCards(){ try{ customCards=JSON.parse(localStorage.getItem('aac_custom_cards')||'[]'); }catch(e){ customCards=[]; } }
+function saveCustomCards(){ try{ localStorage.setItem('aac_custom_cards', JSON.stringify(customCards)); }catch(e){} }
+
+function addCustomCard() {
+  var em    = document.getElementById('new-card-emoji').value.trim() || '😊';
+  var label = document.getElementById('new-card-label').value.trim();
+  var speak_text = document.getElementById('new-card-speak').value.trim() || label;
+  var cat   = document.getElementById('new-card-cat').value;
+  if (!label) { alert('請輸入顯示文字！'); return; }
+  customCards.push({ emoji:em, label:label, speak:speak_text, cat:cat });
+  saveCustomCards();
+  document.getElementById('new-card-emoji').value = '';
+  document.getElementById('new-card-label').value = '';
+  document.getElementById('new-card-speak').value = '';
+  renderCustomCards();
+  renderAdminCustomList();
 }
-function closeRecDrawer() {
-  document.getElementById('rec-drawer').classList.remove('open');
-  document.getElementById('rec-overlay').classList.remove('show');
+
+function renderCustomCards() {
+  loadCustomCards();
+  var grid = document.getElementById('custom-cards-grid');
+  var sec  = document.getElementById('custom-cards-sec');
+  if (!grid) return;
+  grid.innerHTML = '';
+  if (!customCards.length) { sec.style.display='none'; return; }
+  sec.style.display = 'block';
+  customCards.forEach(function(c, idx) {
+    var card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = '<span class="ce">'+c.emoji+'</span><div class="cl">'+c.label+'</div>';
+    card.onclick = function() {
+      document.querySelectorAll('.card.lit').forEach(function(x){x.classList.remove('lit');});
+      card.classList.add('lit');
+      showFS(c.emoji, c.label, '');
+      speak(c.speak || c.label);
+      addRecord(c.emoji, c.label, c.cat || 'talk');
+    };
+    grid.appendChild(card);
+  });
 }
+
+function renderAdminCustomList() {
+  var list = document.getElementById('custom-card-list');
+  if (!list) return;
+  list.innerHTML = '';
+  if (!customCards.length) { list.innerHTML='<div style="color:rgba(240,230,255,.35);font-size:.85rem;padding:10px 0">還沒有自訂字卡</div>'; return; }
+  customCards.forEach(function(c, idx) {
+    var item = document.createElement('div');
+    item.className = 'admin-card-item';
+    item.innerHTML = '<div class="admin-card-em">'+c.emoji+'</div><div class="admin-card-info"><div class="admin-card-name">'+c.label+'</div><div class="admin-card-sub">語音：'+c.speak+'</div></div>';
+    var del = document.createElement('button');
+    del.className = 'admin-del-btn'; del.textContent = '✕';
+    del.onclick = (function(i){ return function(){ customCards.splice(i,1); saveCustomCards(); renderCustomCards(); renderAdminCustomList(); }; })(idx);
+    item.appendChild(del);
+    list.appendChild(item);
+  });
+}
+
+// ── Custom Music ──
+var customMusic = [];
+function loadCustomMusic(){ try{ customMusic=JSON.parse(localStorage.getItem('aac_custom_music')||'[]'); }catch(e){ customMusic=[]; } }
+function saveCustomMusic(){ try{ localStorage.setItem('aac_custom_music', JSON.stringify(customMusic)); }catch(e){} }
+
+function addCustomMusic() {
+  var em     = document.getElementById('new-music-emoji').value.trim() || '🎵';
+  var title  = document.getElementById('new-music-title').value.trim();
+  var artist = document.getElementById('new-music-artist').value.trim();
+  var url    = document.getElementById('new-music-url').value.trim();
+  if (!title || !url) { alert('請輸入歌曲名稱和網址！'); return; }
+  // Extract video ID from URL if full URL given
+  var vid = url;
+  var m = url.match(/(?:v=|youtu\.be\/|embed\/)([A-Za-z0-9_-]{11})/);
+  if (m) vid = m[1];
+  customMusic.push({ emoji:em, title:title, artist:artist, vid:vid });
+  saveCustomMusic();
+  document.getElementById('new-music-emoji').value='';
+  document.getElementById('new-music-title').value='';
+  document.getElementById('new-music-artist').value='';
+  document.getElementById('new-music-url').value='';
+  renderCustomMusic();
+  renderAdminMusicList();
+}
+
+function renderCustomMusic() {
+  loadCustomMusic();
+  var grid = document.getElementById('custom-music-grid');
+  var sec  = document.getElementById('custom-music-sec');
+  if (!grid) return;
+  grid.innerHTML = '';
+  if (!customMusic.length) { sec.style.display='none'; return; }
+  sec.style.display = 'block';
+  customMusic.forEach(function(m, idx) {
+    var card = document.createElement('div');
+    card.className = 'card';
+    card.style.position = 'relative';
+    card.innerHTML = '<span class="yt-badge">▶ YT</span><span class="ce">'+m.emoji+'</span><div class="cl">'+m.title+'</div><div class="cs">'+m.artist+'</div>';
+    card.onclick = function() { openYT(card, m.vid, m.emoji, m.title, m.artist); };
+    grid.appendChild(card);
+  });
+}
+
+function renderAdminMusicList() {
+  var list = document.getElementById('custom-music-list');
+  if (!list) return;
+  list.innerHTML = '';
+  if (!customMusic.length) { list.innerHTML='<div style="color:rgba(240,230,255,.35);font-size:.85rem;padding:10px 0">還沒有自訂音樂</div>'; return; }
+  customMusic.forEach(function(m, idx) {
+    var item = document.createElement('div');
+    item.className = 'admin-card-item';
+    item.innerHTML = '<div class="admin-card-em">'+m.emoji+'</div><div class="admin-card-info"><div class="admin-card-name">'+m.title+'</div><div class="admin-card-sub">'+m.artist+' ｜ ID: '+m.vid+'</div></div>';
+    var del = document.createElement('button');
+    del.className = 'admin-del-btn'; del.textContent = '✕';
+    del.onclick = (function(i){ return function(){ customMusic.splice(i,1); saveCustomMusic(); renderCustomMusic(); renderAdminMusicList(); }; })(idx);
+    item.appendChild(del);
+    list.appendChild(item);
+  });
+}
+
+// ── Admin: daily card lists ──
+var ADMIN_DAILY_COMM = [
+  {emoji:'🙏',label:'謝謝你'},{emoji:'❓',label:'我不懂'},{emoji:'🙋',label:'我想幫忙'}
+];
+var ADMIN_DAILY_FEEL = [
+  {emoji:'😄',label:'我很開心'},{emoji:'😢',label:'我不開心'},{emoji:'😨',label:'我害怕'},
+  {emoji:'😴',label:'我很累'},{emoji:'😖',label:'我不舒服'},{emoji:'🤩',label:'好興奮！'}
+];
+var ADMIN_DAILY_NEED = [
+  {emoji:'💧',label:'想喝水'},{emoji:'🍱',label:'想吃東西'},{emoji:'🚽',label:'要上廁所'},
+  {emoji:'🏠',label:'想回家'},{emoji:'🛏️',label:'想睡覺'},{emoji:'🌳',label:'想出去'},
+  {emoji:'🎵',label:'想聽音樂'},{emoji:'🤗',label:'想抱抱'},{emoji:'💬',label:'想聊天'},{emoji:'🖐️',label:'想牽手'}
+];
+var ADMIN_DAILY_ACT = [
+  {emoji:'🧹',label:'打掃'},{emoji:'⛪',label:'禮拜'},{emoji:'📚',label:'上課'},
+  {emoji:'🚶',label:'散步'},{emoji:'🛒',label:'買東西'},{emoji:'🎲',label:'玩桌遊'},
+  {emoji:'🎤',label:'唱歌'},{emoji:'🎬',label:'看影片'},{emoji:'🍽️',label:'吃東西'}
+];
+var ADMIN_DAILY_FOOD = [
+  {emoji:'😋',label:'好好吃'},{emoji:'🤢',label:'不好吃'},{emoji:'🍜',label:'想吃麵'},
+  {emoji:'🍚',label:'想吃飯'},{emoji:'🧋',label:'想喝飲料'},{emoji:'🫃',label:'我吃飽了'}
+];
+var ADMIN_DAILY_BODY = [
+  {emoji:'💪',label:'我很好'},{emoji:'🤕',label:'頭很痛'},{emoji:'🤢',label:'肚子不舒服'},
+  {emoji:'🦵',label:'腳很痠'},{emoji:'😪',label:'我很想睡'},{emoji:'⚡',label:'很有精神'},
+  {emoji:'🌡️',label:'我發燒了'},{emoji:'😌',label:'我好多了'}
+];
+var hiddenCards = {};
+function loadHiddenCards(){ try{ hiddenCards=JSON.parse(localStorage.getItem('aac_hidden')||'{}'); }catch(e){ hiddenCards={}; } }
+function saveHiddenCards(){ try{ localStorage.setItem('aac_hidden', JSON.stringify(hiddenCards)); }catch(e){} }
+
+function renderAdminLists() {
+  loadHiddenCards();
+  renderAdminList('admin-list-comm', ADMIN_DAILY_COMM);
+  renderAdminList('admin-list-feel', ADMIN_DAILY_FEEL);
+  renderAdminList('admin-list-need', ADMIN_DAILY_NEED);
+  renderAdminList('admin-list-act',  ADMIN_DAILY_ACT);
+  renderAdminList('admin-list-food', ADMIN_DAILY_FOOD);
+  renderAdminList('admin-list-body', ADMIN_DAILY_BODY);
+}
+
+function renderAdminList(listId, items) {
+  var list = document.getElementById(listId);
+  if (!list) return;
+  list.innerHTML = '';
+  items.forEach(function(item) {
+    var key = item.emoji+item.label;
+    var hidden = hiddenCards[key];
+    var el = document.createElement('div');
+    el.className = 'admin-card-item';
+    el.style.opacity = hidden ? '0.35' : '1';
+    el.innerHTML = '<div class="admin-card-em">'+item.emoji+'</div><div class="admin-card-info"><div class="admin-card-name">'+item.label+'</div></div>';
+    var btn = document.createElement('button');
+    btn.className = 'admin-del-btn';
+    btn.textContent = hidden ? '⬆' : '✕';
+    btn.title = hidden ? '恢復顯示' : '隱藏字卡';
+    btn.style.background = hidden ? 'rgba(6,214,160,.15)' : '';
+    btn.style.borderColor = hidden ? 'rgba(6,214,160,.3)' : '';
+    btn.style.color = hidden ? 'var(--yes)' : '';
+    btn.onclick = (function(k, h){ return function(){
+      if (h) delete hiddenCards[k]; else hiddenCards[k]=true;
+      saveHiddenCards();
+      renderAdminLists();
+    }; })(key, hidden);
+    el.appendChild(btn);
+    list.appendChild(el);
+  });
+}
+
+// Init
+loadCustomCards(); loadCustomMusic(); loadHiddenCards();
+setTimeout(function(){ renderCustomCards(); renderCustomMusic(); }, 200);
+
+
+// ── Settings Panel (unified) ──
+var soundMode = 'full'; // 'full' | 'sfx' | 'tts' | 'silent'
+try { soundMode = localStorage.getItem('aac_soundmode') || 'full'; } catch(e){}
+
+function openSettings() {
+  loadDB(); renderRec();
+  renderCustomCards(); renderCustomMusic();
+  renderAdminCustomList(); renderAdminMusicList();
+  updateSoundModeUI();
+  document.getElementById('settings-panel').classList.add('open');
+  document.getElementById('settings-overlay').classList.add('show');
+}
+function closeSettings() {
+  document.getElementById('settings-panel').classList.remove('open');
+  document.getElementById('settings-overlay').classList.remove('show');
+}
+function swSettings(btn, id) {
+  document.querySelectorAll('.s-navbtn').forEach(function(b){b.classList.remove('on');});
+  document.querySelectorAll('.s-sec').forEach(function(s){s.classList.remove('on');});
+  btn.classList.add('on');
+  document.getElementById('settings-'+id).classList.add('on');
+  if (id==='rec-sec') { loadDB(); renderRec(); }
+  if (id==='cards-sec') { renderAdminLists(); renderAdminCustomList(); renderAdminMusicList(); }
+}
+
+// ── Sound mode ──
+function setSoundMode(mode) {
+  soundMode = mode;
+  try { localStorage.setItem('aac_soundmode', mode); } catch(e){}
+  updateSoundModeUI();
+}
+function updateSoundModeUI() {
+  ['full','sfx','tts','silent'].forEach(function(m){
+    var btn = document.getElementById('mode-'+m);
+    if (btn) btn.classList.toggle('on', soundMode===m);
+  });
+}
+// Wrap speak so sound mode is respected
+var _origSpeak = speak;
+speak = function(text) {
+  if (soundMode==='silent' || soundMode==='sfx') return;
+  _origSpeak(text);
+};
+// Wrap mkG so SFX mode is respected
+var _origMkG = mkG;
+mkG = function() {
+  if (soundMode==='silent' || soundMode==='tts') {
+    // Return a dummy gain that connects to nothing
+    var ac = getAC();
+    var g = ac.createGain(); g.gain.value = 0; g.connect(ac.destination); return g;
+  }
+  return _origMkG();
+};
+updateSoundModeUI();
+
+
 
 // ── Editable Title ──
 function startTitleEdit() {
